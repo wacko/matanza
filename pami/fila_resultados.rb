@@ -10,6 +10,6 @@ class FilaResultados
   end
 
   def to_s
-    @datos.join(',')
+    [@dni, @datos].join(',').gsub(/\s\s+/, ' ')
   end
 end

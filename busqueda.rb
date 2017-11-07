@@ -20,25 +20,26 @@ class PamiWebpage
   end
 
   def buscar dni
-    filas = buscar_por_dni dni
+    resultados = buscar_por_dni dni
 
-    log_cantidad_de_resultados dni, filas
-    filas.each do |fila|
+    log_cantidad_de_resultados dni, resultados
+    fichas = resultados.map do |fila|
       log_resultado fila
+      fila
     end
 
-    filas
+    fichas
   end
 
 private
 
   def log_cantidad_de_resultados dni, filas
     puts dni
-    @log_dni.puts "DNI #{dni} = #{filas.size}"
+    @log_dni.puts "DNI #{dni} = #{filas.count}"
   end
 
   def log_resultado fila
-    @log_resultados.puts "#{fila.dni} #{fila}"
+    @log_resultados.puts fila
   end
 
   def parse html
