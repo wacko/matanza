@@ -3,6 +3,7 @@ require 'httparty'
 require 'nokogiri'
 
 require_relative 'pami/fila_resultados'
+require_relative 'pami/pagina_resultados'
 require_relative 'pami/tabla_resultados'
 
 class PamiWebpage
@@ -10,9 +11,14 @@ class PamiWebpage
   base_uri 'institucional.pami.org.ar'
 
   def initialize
-    @log_dni = File.open("dni.log", "w")
-    @log_resultados = File.open("resultados.log", "w")
-  end
+    # Cantidad de resultados por cada DNI buscado
+    @log_dni = File.open("logs/dni.log", "w")
+
+    # Listados de todos las filas de la tabla de busqueda
+    # dni, nombre, ID beneficio, parentesco, fecha de alta, fecha de baja,
+    # Consultorio externo y Hospital de dia para cada Beneficio
+    @log_resultados = File.open("logs/resultados.log", "w")
+ end
 
   def close
     @log_dni.close
@@ -24,8 +30,9 @@ class PamiWebpage
 
     log_cantidad_de_resultados dni, resultados
     fichas = resultados.map do |fila|
-      log_resultado fila
-      fila
+      beneficio = buscar_beneficio fila
+      log_resultado fila, beneficio
+      beneficio
     end
 
     fichas
@@ -38,7 +45,11 @@ private
     @log_dni.puts "DNI #{dni} = #{filas.count}"
   end
 
-  def log_resultado fila
+  def log_resultado fila, beneficio
+    @log_resultados.puts fila.to_a.concat(beneficio.to_a).join(',')
+  end
+
+  def log_beneficio fila
     @log_resultados.puts fila
   end
 
@@ -54,6 +65,11 @@ private
     params = { tipoDocumento: 'DNI', nroDocumento: dni, submit2: 'Buscar' }
     page = parse self.class.post('/result.php?c=6-2-2', body: params)
     TablaResultados.new dni, page
+  end
+
+  def buscar_beneficio beneficio
+    page = parse self.class.get('/' + beneficio.link_detalle)
+    PaginaResultados.new beneficio.dni, page
   end
 end
 
