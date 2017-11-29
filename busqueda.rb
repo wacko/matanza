@@ -10,22 +10,34 @@ class PamiWebpage
   include HTTParty
   base_uri 'institucional.pami.org.ar'
 
-  def initialize
-    # Cantidad de resultados por cada DNI buscado
-    @log_dni = File.open("logs/dni.log", "w")
+  def initialize(log_dir = '.')
+    @total = 0
+    puts "Log dir: #{log_dir}"
 
-    # Listados de todos las filas de la tabla de busqueda
+    # Cantidad de resultados por cada DNI buscado
+    @log_dni = File.open("#{log_dir}/dni.log", "w")
+
+    # Listados de TODAS las filas de la tabla de busqueda
     # dni, nombre, ID beneficio, parentesco, fecha de alta, fecha de baja,
     # Consultorio externo y Hospital de dia para cada Beneficio
-    @log_resultados = File.open("logs/resultados.log", "w")
+    @log_resultados = File.open("#{log_dir}/resultados.log", "w")
+
+    # Idem resultados.log, pero solo aquellos que cumplan:
+    # - localidad = San Justo
+    # - sin fecha de baja
+    @log_resultados_exitosos = File.open("#{log_dir}/resultados_exitosos.log", "w")
  end
 
   def close
     @log_dni.close
     @log_resultados.close
+    @log_resultados_exitosos.close
   end
 
   def buscar dni
+    @total += 1
+    flush_logs if @total % 1000 == 0
+
     resultados = buscar_por_dni dni
 
     log_cantidad_de_resultados dni, resultados
@@ -41,12 +53,15 @@ class PamiWebpage
 private
 
   def log_cantidad_de_resultados dni, filas
-    puts dni
+    puts "#{@total} => #{dni}"
     @log_dni.puts "DNI #{dni} = #{filas.count}"
   end
 
   def log_resultado fila, beneficio
     @log_resultados.puts fila.to_a.concat(beneficio.to_a).join(',')
+    if fila.fecha_baja.empty? && beneficio.localidad == 'SAN JUSTO'
+      @log_resultados_exitosos.puts fila.to_a.concat(beneficio.to_a).join(',')
+    end
   end
 
   def log_beneficio fila
@@ -70,6 +85,12 @@ private
   def buscar_beneficio beneficio
     page = parse self.class.get('/' + beneficio.link_detalle)
     PaginaResultados.new beneficio.dni, page
+  end
+
+  def flush_logs
+    @log_dni.flush
+    @log_resultados.flush
+    @log_resultados_exitosos.flush
   end
 end
 
