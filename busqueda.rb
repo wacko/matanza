@@ -69,7 +69,7 @@ private
   end
 
   def parse html
-    Nokogiri::HTML(html) do |config|
+    Nokogiri::HTML(html, nil, Encoding::ISO_8859_1.to_s) do |config|
       config.options =  Nokogiri::XML::ParseOptions::NONET |
                         Nokogiri::XML::ParseOptions::NOERROR |
                         Nokogiri::XML::ParseOptions::NOBLANKS
