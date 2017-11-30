@@ -8,7 +8,7 @@ class FilaResultados
     @link_detalle = cells.pop.at_css('a')['href']
 
     datos = cells.map { |cell| cell.text.strip.gsub(/\s\s+/, ' ') }
-    @nombre       = datos[0]
+    @nombre       = datos[0].gsub(/,/, '')
     @beneficio    = datos[1]
     @parentesco   = datos[2]
     #documento    = datos[3]

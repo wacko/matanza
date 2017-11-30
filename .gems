@@ -1,3 +1,4 @@
 creek -v 2.0
 httparty -v 0.15.6
 nokogiri -v 1.8.1
+clap -v 1.0.0

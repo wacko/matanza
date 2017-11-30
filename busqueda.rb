@@ -36,6 +36,7 @@ class PamiWebpage
 
   def buscar dni
     @total += 1
+    puts "#{@total} => #{dni}"
     flush_logs if @total % 1000 == 0
 
     resultados = buscar_por_dni dni
@@ -53,7 +54,6 @@ class PamiWebpage
 private
 
   def log_cantidad_de_resultados dni, filas
-    puts "#{@total} => #{dni}"
     @log_dni.puts "DNI #{dni} = #{filas.count}"
   end
 
