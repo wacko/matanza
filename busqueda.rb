@@ -15,17 +15,17 @@ class PamiWebpage
     puts "Log dir: #{log_dir}"
 
     # Cantidad de resultados por cada DNI buscado
-    @log_dni = File.open("#{log_dir}/dni.log", "w")
+    @log_dni = File.open("#{log_dir}/dni.log", "a")
 
     # Listados de TODAS las filas de la tabla de busqueda
     # dni, nombre, ID beneficio, parentesco, fecha de alta, fecha de baja,
     # Consultorio externo y Hospital de dia para cada Beneficio
-    @log_resultados = File.open("#{log_dir}/resultados.log", "w")
+    @log_resultados = File.open("#{log_dir}/resultados.log", "a")
 
     # Idem resultados.log, pero solo aquellos que cumplan:
     # - localidad = San Justo
     # - sin fecha de baja
-    @log_resultados_exitosos = File.open("#{log_dir}/resultados_exitosos.log", "w")
+    @log_resultados_exitosos = File.open("#{log_dir}/resultados_exitosos.log", "a")
  end
 
   def close
