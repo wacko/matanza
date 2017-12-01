@@ -1,0 +1,75 @@
+Consultorio Red
+  Prestador sin red de San Justo: 98482
+  Prestador sin red de Moron: 3122
+  Prestador sin red de Capital Federal: 1025
+  Prestador sin red de Lanus: 1
+  Prestador sin red de San Martin: 1
+  Prestador sin red de Santiago Del Estero: 2
+  Prestador sin red de Azul: 1
+  Centro Medico SA. Sanatorio San Roque: 1
+  N/A: 6473
+
+Consultorio Prestador
+  Policlínica Privada Horizonte SA: 25218
+  Clinica Ducont: 45451
+  Residencia La Estancia: 3252
+  Instituto de Psicopatologia Castelar: 10322
+  Clinica Privada de Psiquiatria y Psicologia San Martin SA: 766
+  Clinica Psiquiatrica Privada Schweitzer: 10321
+  Consultorios Psiquiatricos y Psico: 6915
+  Pridelsa SA: 326
+  Centro Psicopatologico Lanus SA: 1
+  Clinica Privada Gregorio Marañon SA: 32
+  Clinica Privada Banfield SA: 4
+  Clinica Flores SA: 2
+  Comunidad Terapeutica de Palermo: 3
+  Gedevil SA: 2
+  Psiquis Mariazell SRL: 2
+  Centro S.M. Hospital Dia Del Pilar SA: 6
+  Centro de Dia SRL: 2
+  Psiquis Mariazell UTE: 1
+  Centro Medico Prosam SA: 1
+  Hospital San Francisco de Asis: 1
+  Clinica Privada Gregorio Marañon SA: 1
+  Megamental SA: 1
+  El Jardin SRL: 2
+  Instituto Interdisciplinario de Salud Mental: 1
+  Ce.Me.San SRL: 2
+  N/A: 6473
+
+Hospital Red
+  Prestador sin red de San Justo: 98643
+  Prestador sin red de Moron: 2959
+  Prestador sin red de Capital Federal: 1025
+  Prestador sin red de Lanus: 1
+  Prestador sin red de San Martin: 1
+  Prestador sin red de Santiago Del Estero: 2
+  N/A: 6477
+
+Hospital Prestador
+  Policlínica Privada Horizonte SA: 24278
+  Clinica Ducont: 46551
+  Residencia La Estancia: 3577
+  Instituto de Psicopatologia Castelar: 10158
+  Clinica Privada de Psiquiatria y Psicologia San Martin SA: 766
+  Clinica Psiquiatrica Privada Schweitzer: 10322
+  Consultorios Psiquiatricos y Psico: 6915
+  Centro Psicopatologico Lanus SA: 1
+  Clinica Privada Gregorio Marañon SA: 32
+  Clinica Privada Banfield SA: 3
+  Clinica Flores SA: 2
+  Comunidad Terapeutica de Palermo: 3
+  Gedevil SA: 2
+  Clinica Privada Neuropsiqu. San Miguel Matecalri: 2
+  Centro S.M. Hospital Dia Del Pilar SA: 6
+  Centro de Dia SRL: 2
+  Psiquis Mariazell UTE: 1
+  Centro Medico Prosam SA: 1
+  Clinica Privada Gregorio Marañon SA: 1
+  Colonia Cabred: 1
+  Instituto de Psicopatologia Del Sur: 1
+  Megamental SA: 1
+  El Jardin SRL: 2
+  Ce.Me.San SRL: 2
+  Policlínica Privada Horizonte SA: 1
+  N/A: 6477
